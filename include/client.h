@@ -19,8 +19,10 @@ public:
 	~Client() = default;
 
 protected:
+	string lastName;
+	string firstName;
 	tm date_of_birthday;
-	std::string car_id;			// id выданной машины
+	std::string car_key;		// id(ключ в map) выданной машины
 	CLIENT_STATUS status;		// статус клиента
 };
 

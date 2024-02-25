@@ -13,15 +13,15 @@
 #include "manager.h"
 
 
-class Senior_manager final: protected Manager
+class Senior_manager final: public Manager
 {
 public:
 	Senior_manager() = default;
-	virtual ~Senior_manager() = default;
 	Senior_manager(std::string f_name, std::string l_name, size_t pass);
-	/*:
-		Manager(f_name,  l_name,  pass){}
-*/
+	virtual ~Senior_manager() = default;
+
+	void ShowMenu() override;
+
 
 protected:
 
