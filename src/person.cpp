@@ -5,7 +5,7 @@
  *      Author: axtea
  */
 
-#include "../include/Person.h"
+#include "../include/person.h"
 
 
 std::pair<std::string, std::string>

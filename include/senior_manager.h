@@ -11,6 +11,7 @@
 #include <string>
 
 #include "manager.h"
+#include "../include/data.h"
 
 
 class Senior_manager final: public Manager

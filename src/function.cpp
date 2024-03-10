@@ -27,7 +27,7 @@ Manager* find_personal(Personal& in_personal, Menu& in_menu)
 	if (!find_manager)
 	{
 		std::cout << "The manager was not found. The program has been completed.";
-		return EXIT_SUCCESS;
+		return nullptr;
 	}
 }
 

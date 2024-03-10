@@ -10,10 +10,10 @@
 
 #include <map>
 
-#include "car.h"
 #include "client.h"
-#include "../include/Manager.h"
-#include "../include/Senior_Manager.h"
+#include "../include/manager.h"
+#include "../include/senior_manager.h"
+#include "car.h"
 
 class Personal
 {

@@ -14,21 +14,19 @@
 #include "./include/data.h"
 #include "./include/personal.h"
 #include "./include/function.h"
+#include "./include/manager.h"
 
 // протестировать деструкторы Person, добавив и удалив virtual
 int main()
 {
 	Menu menu;
+	Data data;
 	Personal personal;
 	Manager* current_manager;
 
 	current_manager = find_personal(personal, menu);
 
 	current_manager->ShowMenu();
-
-
-
-
 
 }
 

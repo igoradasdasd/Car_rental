@@ -10,6 +10,7 @@
 
 #include <utility>
 #include <string>
+
 // абстрактный базовый класс
 class Person
 {
@@ -22,6 +23,8 @@ protected:
 	std::string first_name;
 	std::string last_name;
 };
+
+
 
 
 
