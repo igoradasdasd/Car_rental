@@ -13,13 +13,43 @@ Manager::Manager(std::string f_name, std::string l_name, size_t pass):
 		Person(f_name, l_name), password(pass)
 		{++id_count, id = id_count;};
 
+std::ostream& operator<< (std::ostream& os, const Manager& rhs)
+{
+	os << rhs.id << std::endl;
+	os << rhs.password << std::endl;
+	os << rhs.post << std::endl;
+	return os;
+}
+
+std::istream& operator>> (std::istream& is, Manager& rhs)
+{
+	int i;
+	is >> rhs.id;
+	is >> rhs.password;
+	is >> rhs.first_name;
+	is >> rhs.last_name;
+	is >> i;
+	rhs.post = static_cast<POST>(i);
+	return is;
+}
+
 void Manager::ShowMenu()
 {
 	int action;
 	std::cout << "Select the action: " << std::endl;
 	std::cout << "1 - Get a car" << std::endl;
 	std::cout << "2 - Give a car" << std::endl;
-//	std::
+
+	switch(action)
+	{
+	case 1:
+		break;
+
+	case 2:
+		break;
+	default:
+		break;
+	}
 }
 
 

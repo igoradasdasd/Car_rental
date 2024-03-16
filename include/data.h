@@ -24,6 +24,8 @@ class Data final
 	friend class Senior_manager;
 public:
 	Data() = default;
+	void read_data(std::string& input_file);
+	void write_data(std::string& ouptut_file);
 private:
 	std::map<std::string, Client> list_of_clients;
 	std::map<std::string, Car> list_of_cars;

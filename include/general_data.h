@@ -22,6 +22,11 @@ enum CLIENT_STATUS
 	BLACKLIST = 3,	 		// внесен в черный список
 };
 
+enum POST		// должность
+{
+	MANAGER,
+	SENIOR_MANAGER
+};
 
 
 #endif /* GENERAL_DATA_H_ */

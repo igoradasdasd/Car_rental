@@ -13,11 +13,12 @@
 #include "person.h"
 #include "general_data.h"
 
-class Client: public Person
+class Client final: public Person
 {
 public:
 	~Client() = default;
-
+	Client() = default;
+	Client(std::string lN, std::string fN, tm d_o_b, std::string c_key);
 protected:
 	std::string lastName;
 	std::string firstName;

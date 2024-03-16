@@ -15,6 +15,8 @@
 
 class Manager: public Person
 {
+	friend std::ostream& operator<< (std::ostream&, const Manager&);
+	friend std::istream& operator>> (std::istream&, Manager&);
 public:
 	static size_t id_count;
 	Manager() = default;
@@ -23,15 +25,17 @@ public:
 	std::string get_key()
 		{return first_name + last_name;};
 	virtual void ShowMenu();
-	size_t get_id() { return id;}
+	size_t get_id() const { return id;}
+	bool check_passwor(size_t in) const { return in == password;};
+	POST position() const {return post;};
 
 protected:
 	size_t id;				// id менеджера
 	size_t password;		// пароль менеджера
-
+	POST post = MANAGER;
 };
 
-
-
+std::ostream& operator<< (std::ostream&, const Manager&);
+std::istream& operator>> (std::istream&, Manager&);
 
 #endif /* MANAGER_H_ */

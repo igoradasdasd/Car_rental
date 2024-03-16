@@ -9,24 +9,34 @@
 #include <fstream>
 #include <iostream>
 #include <cstdlib>
+#include <memory>
 
 #include "./include/menu.h"
 #include "./include/data.h"
 #include "./include/personal.h"
 #include "./include/function.h"
 #include "./include/manager.h"
+#include "./include/typedef.h"
 
-// протестировать деструкторы Person, добавив и удалив virtual
+
+// реализовать сохранение в файл
+
 int main()
 {
 	Menu menu;
 	Data data;
 	Personal personal;
-	Manager* current_manager;
+	Manager m;
+	//std::shared_ptr<Manager> m1 = std::make_shared<Manager>(m);
 
-	current_manager = find_personal(personal, menu);
 
-	current_manager->ShowMenu();
+	std::string manager_file("./files/managers_file.txt");
+	personal.read_data(manager_file, MANAGER);
+	manager_file = "./files/senior_managers_file.txt";
+	personal.read_data(manager_file, SENIOR_MANAGER);
+	personal.identification();
+	personal.authentication();
+
 
 }
 

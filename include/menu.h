@@ -10,6 +10,8 @@
 
 #include <iostream>
 
+#include "manager.h"
+
 struct Menu final
 {
 	void operator()();
@@ -17,6 +19,9 @@ struct Menu final
 	void enter_password();
 
 	size_t entered_id;
+
+	Manager* enter_id() const;		// идентификация
+	bool enter_password() const;	// аутентификация
 };
 
 

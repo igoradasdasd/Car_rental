@@ -8,7 +8,7 @@
 #include "../include/menu.h"
 #include "../include/data.h"
 #include "../include/personal.h"
-
+/*
 Manager* find_personal(Personal& in_personal, Menu& in_menu)
 {
 	Manager *find_manager;
@@ -30,5 +30,5 @@ Manager* find_personal(Personal& in_personal, Menu& in_menu)
 		return nullptr;
 	}
 }
-
+*/
 
