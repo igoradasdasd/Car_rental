@@ -26,8 +26,8 @@ public:
 		{return first_name + last_name;};
 	virtual void ShowMenu();
 	size_t get_id() const { return id;}
-	bool check_passwor(size_t in) const { return in == password;};
-	POST position() const {return post;};
+	bool check_password(size_t in) const { return in == password;};
+	POST position() const {return post;};		// возвращает должность
 
 protected:
 	size_t id;				// id менеджера

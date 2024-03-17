@@ -29,11 +29,13 @@ int main()
 	Manager m;
 	//std::shared_ptr<Manager> m1 = std::make_shared<Manager>(m);
 
-
+	// считывание данных
 	std::string manager_file("./files/managers_file.txt");
-	personal.read_data(manager_file, MANAGER);
-	manager_file = "./files/senior_managers_file.txt";
-	personal.read_data(manager_file, SENIOR_MANAGER);
+	std::string senior_manager_file = "./files/senior_managers_file.txt";
+	personal.read_data(manager_file, senior_manager_file);
+
+
+
 	personal.identification();
 	personal.authentication();
 

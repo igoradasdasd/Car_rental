@@ -23,14 +23,19 @@ public:
 	void identification () const;
 	void authentication () const;
 
-	void read_data(std::string input_file_manager, POST);	// чтение данных из файла
-	void write_data(std::string& ouptut_file);				// запись данных  в файл
-	void check_open_file(std::ifstream&, std::string ) const; 	// проверка открытия файла
-	void check_ifstream(std::ifstream&) const;					// проверка успешности чтения из файла
+	void read_data(std::string file_managers, std::string file_senior_managers);	// чтение данных
+	void write_data(std::string file_managers, std::string file_senior_managers);	// запись данных
+		// file_managers - файл, где хранятся менеджеры
+		// file_senior_managers - файл, где храняться старшие менеджеры
+	void write_data(std::string& ouptut_file, POST);				// запись данных  в файл
+	void check_open_file(std::fstream&, std::string, const std::string&) const; 	// проверка открытия файла
+	void check_ifstream(std::fstream&, const std::string&) const;					// проверка успешности чтения из файла
 	void check_position(manager_ptr , POST) const;			// проверка соответсвия должностей
 
-	mutable manager_ptr current_manager;
+	mutable manager_ptr current_manager;					// можно обойтись без mutable, но надо убрать const у соответсвующей функции
 private:
+	void read_data_from_file(std::string file_manager, POST);	// чтение данных из файла
+	void wirte_data_from_file(std::string file_manager, POST);	// запись данных в файл
 	std::map<size_t, manager_ptr> list_of_Personal;
 };
 

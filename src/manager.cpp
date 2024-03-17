@@ -7,7 +7,7 @@
 
 #include "../include/manager.h"
 
-size_t Manager::id_count = 0;
+size_t Manager::id_count = 0; 		// предустановленный senior_manager должен иметь id 0
 
 Manager::Manager(std::string f_name, std::string l_name, size_t pass):
 		Person(f_name, l_name), password(pass)
@@ -17,6 +17,8 @@ std::ostream& operator<< (std::ostream& os, const Manager& rhs)
 {
 	os << rhs.id << std::endl;
 	os << rhs.password << std::endl;
+	os << rhs.first_name;
+	os << rhs.last_name;
 	os << rhs.post << std::endl;
 	return os;
 }
