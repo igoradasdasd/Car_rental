@@ -15,7 +15,7 @@ Senior_manager::Senior_manager(std::string f_name, std::string l_name, size_t pa
 Senior_manager::Senior_manager(std::string f_name, std::string l_name, size_t pass):
 	Manager(f_name,  l_name, pass){++id_count, id = id_count;};
 
-void Senior_manager::ShowMenu()
+void Senior_manager::action()
 {
 
 }

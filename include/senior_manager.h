@@ -21,8 +21,7 @@ public:
 	Senior_manager(std::string f_name, std::string l_name, size_t pass);
 	virtual ~Senior_manager() = default;
 
-	void ShowMenu() override;
-
+	void action() override;
 
 protected:
 

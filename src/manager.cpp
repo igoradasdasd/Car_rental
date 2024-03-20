@@ -7,7 +7,7 @@
 
 #include "../include/manager.h"
 
-size_t Manager::id_count = 0; 		// предустановленный senior_manager должен иметь id 0
+size_t Manager::id_count = 2; 		// предустановленный senior_manager должен иметь id 0
 
 Manager::Manager(std::string f_name, std::string l_name, size_t pass):
 		Person(f_name, l_name), password(pass)
@@ -17,9 +17,9 @@ std::ostream& operator<< (std::ostream& os, const Manager& rhs)
 {
 	os << rhs.id << std::endl;
 	os << rhs.password << std::endl;
-	os << rhs.first_name;
-	os << rhs.last_name;
-	os << rhs.post << std::endl;
+	os << rhs.first_name << std::endl;
+	os << rhs.last_name << std::endl;
+	os << static_cast<int>(rhs.post) << std::endl;
 	return os;
 }
 
@@ -35,7 +35,7 @@ std::istream& operator>> (std::istream& is, Manager& rhs)
 	return is;
 }
 
-void Manager::ShowMenu()
+void Manager::action()
 {
 	int action;
 	std::cout << "Select the action: " << std::endl;
@@ -49,6 +49,7 @@ void Manager::ShowMenu()
 
 	case 2:
 		break;
+
 	default:
 		break;
 	}

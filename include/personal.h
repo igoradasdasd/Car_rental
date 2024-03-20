@@ -16,10 +16,13 @@
 #include "../include/senior_manager.h"
 #include "car.h"
 #include "../include/typedef.h"
+#include "../include/check_file_stream.h"
 
 class Personal
 {
 public:
+	Check_file_stream check;
+
 	void identification () const;
 	void authentication () const;
 
@@ -27,9 +30,6 @@ public:
 	void write_data(std::string file_managers, std::string file_senior_managers);	// запись данных
 		// file_managers - файл, где хранятся менеджеры
 		// file_senior_managers - файл, где храняться старшие менеджеры
-	void write_data(std::string& ouptut_file, POST);				// запись данных  в файл
-	void check_open_file(std::fstream&, std::string, const std::string&) const; 	// проверка открытия файла
-	void check_ifstream(std::fstream&, const std::string&) const;					// проверка успешности чтения из файла
 	void check_position(manager_ptr , POST) const;			// проверка соответсвия должностей
 
 	mutable manager_ptr current_manager;					// можно обойтись без mutable, но надо убрать const у соответсвующей функции

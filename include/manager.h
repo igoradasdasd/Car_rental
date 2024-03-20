@@ -24,7 +24,7 @@ public:
 	virtual ~Manager() = default;
 	std::string get_key()
 		{return first_name + last_name;};
-	virtual void ShowMenu();
+	virtual void action();
 	size_t get_id() const { return id;}
 	bool check_password(size_t in) const { return in == password;};
 	POST position() const {return post;};		// возвращает должность

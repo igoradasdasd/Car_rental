@@ -20,6 +20,7 @@
 
 
 // реализовать сохранение в файл
+// добавить проверку при чтении, что файл пустой eof
 
 int main()
 {
@@ -27,18 +28,21 @@ int main()
 	Data data;
 	Personal personal;
 	Manager m;
-	//std::shared_ptr<Manager> m1 = std::make_shared<Manager>(m);
 
 	// считывание данных
 	std::string manager_file("./files/managers_file.txt");
 	std::string senior_manager_file = "./files/senior_managers_file.txt";
 	personal.read_data(manager_file, senior_manager_file);
 
-
+	//personal.
 
 	personal.identification();
 	personal.authentication();
 
+
+
+
+//	personal.write_data(manager_file, senior_manager_file);	// вызывать при изменениях в учетных записях
 
 }
 
