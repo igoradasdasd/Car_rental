@@ -11,7 +11,6 @@
 #include <string>
 
 #include "manager.h"
-#include "../include/data.h"
 
 
 class Senior_manager final: public Manager
@@ -21,7 +20,7 @@ public:
 	Senior_manager(std::string f_name, std::string l_name, size_t pass);
 	virtual ~Senior_manager() = default;
 
-	void action() override;
+	void action(Data&) override;
 
 protected:
 

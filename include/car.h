@@ -25,7 +25,7 @@ public:
 	Car() = default;
 	Car(string mod, string num, int mil, double cost_of_km, double cost_of_d,
 			CAR_STATUS c_s);
-
+	std::string get_key(){ return number;}
 private:
 	string model;				// модель
 	string number;				// номер

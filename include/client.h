@@ -22,6 +22,7 @@ public:
 	~Client() = default;
 	Client() = default;
 	Client(std::string lN, std::string fN);
+	std::string get_key(){return lastName + " " + firstName;}
 protected:
 	std::string lastName;
 	std::string firstName;

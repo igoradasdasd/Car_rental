@@ -12,6 +12,7 @@
 
 #include "person.h"
 #include "general_data.h"
+#include "data.h"
 
 class Manager: public Person
 {
@@ -24,11 +25,11 @@ public:
 	virtual ~Manager() = default;
 	std::string get_key()
 		{return first_name + last_name;};
-	virtual void action();
+
 	size_t get_id() const { return id;}
 	bool check_password(size_t in) const { return in == password;};
 	POST position() const {return post;};		// возвращает должность
-
+	virtual void action(Data&);				// то  что может делать менеджер
 protected:
 	size_t id;				// id менеджера
 	size_t password;		// пароль менеджера

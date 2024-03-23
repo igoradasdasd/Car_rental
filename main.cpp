@@ -21,11 +21,11 @@
 
 
 // реализовать сохранение в файл
-// добавить проверку при чтении, что файл пустой eof
+// Как считывать data с ключами?
 
 int main()
 {
-	Menu menu;
+
 	Data data;
 	Personal personal;
 	Manager m;
@@ -38,12 +38,12 @@ int main()
 
 	std::string cars_file("./files/cars.txt");
 	std::string clients_file("./files/clients.txt");
-
 	data.read_data(cars_file, clients_file);
 
 
 	personal.identification();
 	personal.authentication();
+//	personal.current_manager->action()
 
 
 //	personal.write_data(manager_file, senior_manager_file);	// вызывать при изменениях в учетных записях

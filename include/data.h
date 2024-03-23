@@ -13,16 +13,14 @@
 
 #include "car.h"
 #include "client.h"
-#include "manager.h"
-#include "senior_manager.h"
+//#include "manager.h"
+//#include "senior_manager.h"
 #include "check_file_stream.h"
 
 
 //класс, содержащий перечень клиентов и машин
 class Data final
 {
-	friend class Manager;
-	friend class Senior_manager;
 public:
 	Check_file_stream check;
 	Data() = default;
@@ -30,27 +28,13 @@ public:
 	void write_data(std::string ouptut_file, std::string car_f);
 
 private:
-	template<typename T>
-	void read_from_file(std::string clients_f, std::map<std::string, T> list);
+	void read_clients(std::string clients_f, std::map<std::string, Client> list);
+	void read_cars(std::string clients_f, std::map<std::string, Car> list);
 
 	std::map<std::string, Client> list_of_clients;
 	std::map<std::string, Car> list_of_cars;
 
 };
-
-template<typename T>
-void Data::read_from_file(std::string clients_f, std::map<std::string, T> list)
-{
-
-}
-
-extern
-template
-void Data::read_from_file(std::string clients_f, std::map<std::string, Client> list);
-
-extern
-template
-void Data::read_from_file(std::string clients_f, std::map<std::string, Car> list);
 
 
 

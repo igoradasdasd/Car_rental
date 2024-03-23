@@ -35,7 +35,7 @@ std::istream& operator>> (std::istream& is, Manager& rhs)
 	return is;
 }
 
-void Manager::action()
+void Manager::action(Data& data)
 {
 	int action;
 	std::cout << "Select the action: " << std::endl;
