@@ -9,24 +9,29 @@
 #define CLIENT_H_
 
 #include <ctime>
+#include <iostream>
 
 #include "person.h"
 #include "general_data.h"
 
 class Client final: public Person
 {
+	friend std::ostream& operator << (std::ostream&, Client & rhs);
+	friend std::istream& operator >> (std::istream&, Client & rhs);
 public:
 	~Client() = default;
 	Client() = default;
-	Client(std::string lN, std::string fN, tm d_o_b, std::string c_key);
+	Client(std::string lN, std::string fN);
 protected:
 	std::string lastName;
 	std::string firstName;
-	tm date_of_birthday;
 	std::string car_key;		// id(ключ в map) выданной машины
 	CLIENT_STATUS status;		// статус клиента
 };
 
+
+std::ostream& operator << (std::ostream&, Client & rhs);
+std::istream& operator >> (std::istream&, Client & rhs);
 
 
 

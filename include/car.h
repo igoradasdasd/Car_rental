@@ -10,12 +10,16 @@
 
 #include <time.h>
 #include <string>
+#include <iostream>
+
 using std::string;
 
 #include "general_data.h"
 
 class Car
 {
+	friend std::ostream & operator << (std::ostream &, Car rhs);
+	friend std::istream & operator >> (std::istream &, Car rhs);
 public:
 	~Car() = default;
 	Car() = default;
@@ -33,6 +37,7 @@ private:
 	time_t time = 0;			// дата аренды
 };
 
-
+std::ostream & operator << (std::ostream &, Car rhs);
+std::istream & operator >> (std::istream &, Car rhs);
 
 #endif /* INCLUDE_CAR_H_ */

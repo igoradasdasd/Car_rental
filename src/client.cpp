@@ -7,8 +7,27 @@
 
 #include "../include/client.h"
 
-Client::Client(std::string lN, std::string fN, tm d_o_b, std::string c_key):
-	lastName(lN), firstName(fN), date_of_birthday(d_o_b), car_key(c_key),
+Client::Client(std::string lN, std::string fN):
+	lastName(lN), firstName(fN), car_key(std::string()),
 	status(CAR_IS_NOT_RENTAL){}
 
 
+std::ostream& operator << (std::ostream& os, Client & rhs)
+{
+	os << rhs.lastName;
+	os << rhs.firstName;
+	os << rhs.car_key;
+	os << rhs.status;
+	return os;
+}
+
+std::istream& operator >> (std::istream& is, Client& rhs)
+{
+	int in;
+	is >> rhs.lastName;
+	is >> rhs.firstName;
+	is >> rhs.car_key;
+	is >> in;
+	rhs.status =  static_cast<CLIENT_STATUS>(in);
+	return is;
+}

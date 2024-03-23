@@ -13,6 +13,7 @@
 
 #include "./include/menu.h"
 #include "./include/data.h"
+#include "./include/car.h"
 #include "./include/personal.h"
 #include "./include/function.h"
 #include "./include/manager.h"
@@ -28,22 +29,24 @@ int main()
 	Data data;
 	Personal personal;
 	Manager m;
+	Car c;
 
 	// считывание данных
 	std::string manager_file("./files/managers_file.txt");
 	std::string senior_manager_file = "./files/senior_managers_file.txt";
 	personal.read_data(manager_file, senior_manager_file);
 
-	//personal.
+	std::string cars_file("./files/cars.txt");
+	std::string clients_file("./files/clients.txt");
+
+	data.read_data(cars_file, clients_file);
+
 
 	personal.identification();
 	personal.authentication();
 
 
-
-
 //	personal.write_data(manager_file, senior_manager_file);	// вызывать при изменениях в учетных записях
-
 }
 
 
