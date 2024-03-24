@@ -8,10 +8,10 @@
 //#include "../include/personal.h"
 #include "../include/data.h"
 
-void Data::read_data(std::string file, std::string car_f)
+void Data::read_data(std::string client_f, std::string car_f)
 {
-	read_clients(file, list_of_clients);
-	read_cars(file, list_of_cars);
+	read_clients(client_f, list_of_clients);
+	read_cars(car_f, list_of_cars);
 }
 
 void Data::read_clients(std::string clients_f, std::map<std::string, Client> list)
@@ -47,11 +47,16 @@ void Data::read_cars(std::string cars_f, std::map<std::string, Car> list)
 	}
 	read_file.close();
 }
-/*
-void Data::read_clients_from_file(std::string clients_f)
-{
 
+
+void Data::write_data(std::string client_f, std::string car_f)
+{
+	write_object(client_f, list_of_clients);
+	write_object(car_f, list_of_cars);
 }
-*/
+
+template void Data::write_object(std::string , std::map<std::string, Client> );
+template void Data::write_object(std::string , std::map<std::string, Car> );
+
 
 

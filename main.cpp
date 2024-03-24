@@ -21,7 +21,7 @@
 
 
 // реализовать сохранение в файл
-// Как считывать data с ключами?
+// реализовать action, проверить чтение и запись в data
 
 int main()
 {
@@ -38,15 +38,13 @@ int main()
 
 	std::string cars_file("./files/cars.txt");
 	std::string clients_file("./files/clients.txt");
-	data.read_data(cars_file, clients_file);
-
+	data.read_data(clients_file, cars_file);
 
 	personal.identification();
 	personal.authentication();
-//	personal.current_manager->action()
 
+	data.write_data(clients_file, cars_file);
 
-//	personal.write_data(manager_file, senior_manager_file);	// вызывать при изменениях в учетных записях
 }
 
 

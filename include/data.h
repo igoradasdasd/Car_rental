@@ -24,18 +24,36 @@ class Data final
 public:
 	Check_file_stream check;
 	Data() = default;
-	void read_data(std::string file, std::string car_f);
-	void write_data(std::string ouptut_file, std::string car_f);
+	void read_data(std::string client_f, std::string car_f);
+	void write_data(std::string client_f, std::string car_f);
 
 private:
 	void read_clients(std::string clients_f, std::map<std::string, Client> list);
 	void read_cars(std::string clients_f, std::map<std::string, Car> list);
-
+/*
+	void write_clients(std::string clients_f, std::map<std::string, Client> list);
+	void write_car(std::string clients_f, std::map<std::string, Car> list);
+*/
+	template <typename T>
+	void write_object(std::string clients_f, std::map<std::string, T>);
 	std::map<std::string, Client> list_of_clients;
 	std::map<std::string, Car> list_of_cars;
-
 };
 
+template <typename T>
+void Data::write_object(std::string clients_f, std::map<std::string, T> list)
+{
+	std::fstream write_clients_file(clients_f);
+	check.check_open_file(write_clients_file, clients_f, "Data::write_clients");
+	for (auto i = list.cbegin();
+			i != list.cend(); ++i)
+	{
+		write_clients_file << ( (i->second) );
+		check.check_ifstream(write_clients_file, "Data::write_clients");
+	}
+}
 
+extern template void Data::write_object(std::string , std::map<std::string, Client> );
+extern template void Data::write_object(std::string , std::map<std::string, Car> );
 
 #endif /* INCLUDE_DATA_H_ */

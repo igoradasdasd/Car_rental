@@ -10,7 +10,7 @@ Car::Car(string mod, string num, int mil, double cost_of_km, double cost_of_d, C
 	model(mod), number(num), cost_of_kilometer(cost_of_km), cost_of_day(cost_of_d),  mileage(mil),
 	status(c_s) {}
 
-std::ostream & operator << (std::ostream & os, Car rhs)
+std::ostream & operator << (std::ostream & os, const Car rhs)
 {
 	os << rhs.model << std::endl;
 	os << rhs.number << std::endl;

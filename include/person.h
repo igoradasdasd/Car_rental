@@ -24,9 +24,4 @@ protected:
 	std::string last_name;
 };
 
-
-
-
-
-
 #endif /* PERSON_H_ */

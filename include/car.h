@@ -18,7 +18,7 @@ using std::string;
 
 class Car
 {
-	friend std::ostream & operator << (std::ostream &, Car rhs);
+	friend std::ostream & operator << (std::ostream &, const Car rhs);
 	friend std::istream & operator >> (std::istream &, Car rhs);
 public:
 	~Car() = default;
@@ -37,7 +37,7 @@ private:
 	time_t time = 0;			// дата аренды
 };
 
-std::ostream & operator << (std::ostream &, Car rhs);
+std::ostream & operator << (std::ostream &,  const Car rhs);
 std::istream & operator >> (std::istream &, Car rhs);
 
 #endif /* INCLUDE_CAR_H_ */
