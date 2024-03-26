@@ -27,13 +27,17 @@ public:
 	void read_data(std::string client_f, std::string car_f);
 	void write_data(std::string client_f, std::string car_f);
 
+	void add_client();
+	void delete_client();
+	void add_car();
+	void delete_car();
+	void get_car();			// получить машину
+	void give_car();		// выдать машину
+
 private:
 	void read_clients(std::string clients_f, std::map<std::string, Client> list);
 	void read_cars(std::string clients_f, std::map<std::string, Car> list);
-/*
-	void write_clients(std::string clients_f, std::map<std::string, Client> list);
-	void write_car(std::string clients_f, std::map<std::string, Car> list);
-*/
+
 	template <typename T>
 	void write_object(std::string clients_f, std::map<std::string, T>);
 	std::map<std::string, Client> list_of_clients;
@@ -49,6 +53,7 @@ void Data::write_object(std::string clients_f, std::map<std::string, T> list)
 			i != list.cend(); ++i)
 	{
 		write_clients_file << ( (i->second) );
+
 		check.check_ifstream(write_clients_file, "Data::write_clients");
 	}
 }

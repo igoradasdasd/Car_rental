@@ -94,8 +94,7 @@ void Personal::write_data(std::string file_managers, std::string file_senior_man
 	}
 }
 
-void
-Personal::identification() const
+void Personal::identification() const
 {
 	size_t in_id;
 	char c = 'y';
@@ -118,8 +117,7 @@ Personal::identification() const
 	exit(EXIT_FAILURE);
 }
 
-void
-Personal::authentication() const
+void Personal::authentication() const
 {
 	size_t password;
 	char c = 'y';
@@ -138,4 +136,80 @@ Personal::authentication() const
 		}
 	}
 	exit(EXIT_FAILURE);
+}
+
+void Personal::edit_personal_list()
+{
+	std::cout << "Edit personal list" << std::endl;
+	int p;
+	char repeat = 'Y';
+	while (repeat == 'Y')
+	{
+		std::cout << "Enter post: 0 - add manager, 1 - add senjor_manager, 3 - delete manager or senjor_manager ";
+		std::cin >> p;
+		switch(p)
+		{
+		case 0:
+			add_manager();
+			break;
+		case 1:
+			add_senjor_manager();
+			break;
+		case 3:
+			delete_manager();
+			break;
+		default:
+			std::cout << "Error input, enter 'Y' to repeat" ;
+			std::cin >> repeat;
+		};
+		std::cout << "Enter 'Y' to continue" ;
+		std::cin >> repeat;
+	}
+}
+
+void Personal::delete_manager()
+{
+	int in_id;
+	std::cout << "Enter personal id ";
+	std::cin >> in_id;
+	if (in_id == current_manager->get_id())
+	{
+		std::cout << "You can't delete yourself" << std::endl;
+		continue;
+	}
+	size_t del_count = list_of_Personal.erase(in_id);
+	if ( 0 == del_count )
+		std::cout << "A worker not found" << std::endl;
+	else
+		std::cout << "the removal of the employee was successful" << std::endl;
+}
+
+void Personal::add_manager()
+{
+	std::string first_name, last_name;
+	size_t pass;
+	std::cout << " Enter first name: " << std::endl;
+	std::cin >> first_name;
+	std::cout << " Enter last name: " << std::endl;
+	std::cin >> last_name;
+	std::cout << " Enter password: " << std::endl;
+	std::cin >> pass;
+	Manager m1(first_name, last_name, pass);
+	manager_ptr m_ptr  = std::make_shared<Manager>(m1);
+	list_of_Personal.insert(std::make_pair(m_ptr->get_id(), m_ptr));
+}
+
+void Personal::add_senjor_manager()
+{
+	std::string first_name, last_name;
+	size_t pass;
+	std::cout << " Enter first name: " << std::endl;
+	std::cin >> first_name;
+	std::cout << " Enter last name: " << std::endl;
+	std::cin >> last_name;
+	std::cout << " Enter password: " << std::endl;
+	std::cin >> pass;
+	Senior_manager m1(first_name, last_name, pass);
+	manager_ptr m_ptr  = std::make_shared<Manager>(m1);
+	list_of_Personal.insert(std::make_pair(m_ptr->get_id(), m_ptr));
 }

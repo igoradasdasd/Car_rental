@@ -20,15 +20,15 @@
 #include "./include/typedef.h"
 
 
-// реализовать сохранение в файл
-// реализовать action, проверить чтение и запись в data
+// реализовать удаление и добавление клиента и машины, выдачу/получение машины
+// personal.current_manager->action(Personal&, Data&) - добавление и удаление всех сущностей, получение и выдача машин
+// реализовать сохранение и чтение id в файл
 
 int main()
 {
 
 	Data data;
 	Personal personal;
-	Manager m;
 	Car c;
 
 	// считывание данных
@@ -42,9 +42,10 @@ int main()
 
 	personal.identification();
 	personal.authentication();
+	personal.edit_personal_list();
 
 	data.write_data(clients_file, cars_file);
-
+	personal.write_data(manager_file, senior_manager_file);
 }
 
 

@@ -21,7 +21,7 @@ class Manager: public Person
 public:
 	static size_t id_count;
 	Manager() = default;
-	Manager(std::string f_name, std::string l_name, size_t pass);
+	Manager(std::string f_name, std::string l_name, size_t pass, POST in_post  = MANAGER);
 	virtual ~Manager() = default;
 	std::string get_key()
 		{return first_name + last_name;};

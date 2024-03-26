@@ -17,7 +17,7 @@ std::ostream& operator << (std::ostream& os, const Client & rhs)
 	os << rhs.last_name << std::endl;
 	os << rhs.first_name << std::endl;
 	os << rhs.car_key << std::endl;
-	os << rhs.status << std::endl;
+	os << rhs.status;
 	return os;
 }
 
