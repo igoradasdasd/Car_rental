@@ -169,13 +169,13 @@ void Personal::edit_personal_list()
 
 void Personal::delete_manager()
 {
-	int in_id;
+	size_t in_id;
 	std::cout << "Enter personal id ";
 	std::cin >> in_id;
 	if (in_id == current_manager->get_id())
 	{
 		std::cout << "You can't delete yourself" << std::endl;
-		continue;
+		return;
 	}
 	size_t del_count = list_of_Personal.erase(in_id);
 	if ( 0 == del_count )

@@ -23,6 +23,10 @@ public:
 	Client() = default;
 	Client(std::string fN, std::string lN);
 	std::string get_key(){return first_name + " " + last_name;}
+	void set_car_key(std::string & in) {}
+	void clear_car_key() { car_key = std::string();}
+	std::string give_car_key(){return car_key;}
+	bool check_status();
 protected:
 //	std::string lastName;
 //	std::string firstName;

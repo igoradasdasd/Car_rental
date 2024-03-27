@@ -19,7 +19,7 @@
 #include "./include/manager.h"
 #include "./include/typedef.h"
 
-
+// give_car - доработать
 // реализовать удаление и добавление клиента и машины, выдачу/получение машины
 // personal.current_manager->action(Personal&, Data&) - добавление и удаление всех сущностей, получение и выдача машин
 // реализовать сохранение и чтение id в файл

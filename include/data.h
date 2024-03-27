@@ -31,12 +31,14 @@ public:
 	void delete_client();
 	void add_car();
 	void delete_car();
-	void get_car();			// получить машину
-	void give_car();		// выдать машину
+	void work();
 
 private:
 	void read_clients(std::string clients_f, std::map<std::string, Client> list);
 	void read_cars(std::string clients_f, std::map<std::string, Car> list);
+	void get_car();			// получить машину
+	void give_car();		// выдать машину
+	void find(std::map<std::string, Client>::iterator &, std::map<std::string, Car>::iterator &);
 
 	template <typename T>
 	void write_object(std::string clients_f, std::map<std::string, T>);

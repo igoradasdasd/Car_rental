@@ -31,3 +31,16 @@ std::istream& operator >> (std::istream& is, Client& rhs)
 	rhs.status =  static_cast<CLIENT_STATUS>(in);
 	return is;
 }
+
+bool Client::check_status()
+{
+	if (status == CAR_IS_RENTAL)
+		{ std::cout << "The client did not return the car" << std::endl;
+		return false;
+		}
+	if (status == BLACKLIST)
+		{ std::cout << "The client is in blacklist" << std::endl;
+		return false;
+		}
+	return true;
+}
