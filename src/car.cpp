@@ -19,7 +19,7 @@ std::ostream & operator << (std::ostream & os, const Car rhs)
 	os << rhs.cost_of_day << std::endl;
 	os << rhs.mileage << std::endl;
 	os << static_cast<int>(rhs.status) << std::endl;
-	os << rhs.time;
+	os << rhs.time_car;
 	return os;
 }
 
@@ -35,6 +35,21 @@ std::istream & operator >> (std::istream & is, Car rhs)
 	is >> rhs.mileage;
 	is >> in;
 	rhs.status = static_cast<CAR_STATUS>(in);
-	is >> rhs.time;
+	is >> rhs.time_car;
 	return is;
+}
+
+bool Car::check_status()
+{
+	if (status == BUSY)
+	{
+		std::cout << "Car is busy" << std::endl;
+		return false;
+	}
+	if (status == BROKEN)
+	{
+		std::cout << "Car is broken" << std::endl;
+		return false;
+	}
+	return true;
 }
