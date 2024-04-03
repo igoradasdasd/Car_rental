@@ -26,8 +26,7 @@ public:
 
 	~Car() = default;
 	Car() = default;
-	Car(string mod, string num, int mil, double cost_of_km, double cost_of_d,
-			CAR_STATUS c_s);
+	Car(string mod, string num, int mil, double cost_of_km, double cost_of_d);
 	std::string get_key(){ return number;}
 	bool check_status();
 	void set_status(const CAR_STATUS& in){status = in;};
@@ -42,12 +41,12 @@ public:
 private:
 	string model;				// модель
 	string number;				// номер
-	string client_key;			// id (ключ в map) клиента, взявшего машину
+	string client_key = std::string();			// id (ключ в map) клиента, взявшего машину
 	double cost_of_kilometer;	// при пробеге более 300 км за сутки , берется дополнительная стоимость за каждый километер сверху
 	double cost_of_day;			// стоимость дня аренды
 	int mileage;				// пробег
-	CAR_STATUS status;			// свободна, сломана, выдана
-	time_t time_car = 0;			// дата аренды
+	CAR_STATUS status = FREE;			// свободна, сломана, выдана
+	time_t time_car = 0;		// дата аренды
 };
 
 std::ostream & operator << (std::ostream &,  const Car rhs);

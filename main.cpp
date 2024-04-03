@@ -19,9 +19,10 @@
 #include "./include/manager.h"
 #include "./include/typedef.h"
 
-// добавить в Data edit_data(редактирование данных:клиентов и машин - добавление удалени)
+// добавить в action(manger/senior manager) параметр personal
+// Доработать switch в senior manager
 // реализовать для Personal конструктор копий, конструктор rvalue, оператор присвоение копии, оператор присвоения rvalue
-// personal.current_manager->action(Personal&, Data&) - добавление и удаление всех сущностей, получение и выдача машин
+
 // реализовать сохранение и чтение id в файл
 
 int main()

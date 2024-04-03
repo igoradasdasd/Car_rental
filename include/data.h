@@ -27,13 +27,16 @@ public:
 	void read_data(std::string client_f, std::string car_f);
 	void write_data(std::string client_f, std::string car_f);
 
+	void work();		// выдача/получение машины
+	void edit_data();	// редактирование списка машин и клиентов
+
+private:
 	void add_client();
 	void delete_client();
 	void add_car();
 	void delete_car();
-	void work();
+	void car_in_repair();
 
-private:
 	void read_clients(std::string clients_f, std::map<std::string, Client> list);
 	void read_cars(std::string clients_f, std::map<std::string, Car> list);
 	void get_car();			// получить машину

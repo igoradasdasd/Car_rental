@@ -79,7 +79,7 @@ void Data::work()
 			std::cout << "Error input" << std::endl;
 			break;
 		}
-		std::cout << "Enter 'Y' to continue" ;
+		std::cout << "Enter 'Y' to repeat" ;
 		std::cin >> repeat;
 	}
 }
@@ -166,7 +166,7 @@ void Data::find(std::map<std::string, Client>::iterator & i_cl,
 		i_cl = list_of_clients.find(fn);
 		if (i_cl == list_of_clients.end())
 		{
-			std::cout << "The сlient was not found. Enter 'Y' to repeat" ;
+			std::cout << "The сlient was not found. Enter 'Y' to repeat the search" ;
 			std::cin >> repeat;
 			if (repeat != 'Y')
 				return;
@@ -181,11 +181,152 @@ void Data::find(std::map<std::string, Client>::iterator & i_cl,
 		i_car = list_of_cars.find(ln);
 		if (i_car == list_of_cars.end())
 		{
-			std::cout << "The car was not found. Enter 'Y' to repeat" ;
+			std::cout << "The car was not found. Enter 'Y' to repeat the search" ;
 			std::cin >> repeat;
 			if (repeat != 'Y')
 				return;
 		}
+	}
+}
+
+void Data::edit_data()
+{
+	char repeat = 'Y';
+	int p;
+	std::cout << "Select action: 0 - add a car, 1 - delete a car, 2 - take it out for repair" << std::endl;
+	std::cout << "Select action: 3 - add a client, 4 - delete a client" << std::endl;
+
+	while ('Y' == repeat)
+	{
+		switch(p)
+		{
+		case 0:
+			add_car();
+			break;
+		case 1:
+			delete_car();
+			break;
+		case 2:
+			car_in_repair();
+			break;
+		case 3:
+			add_client();
+			break;
+		case 4:
+			delete_client();
+			break;
+		default:
+			std::cout << "Error input" << std::endl;
+			break;
+		}
+		std::cout << "Enter 'Y' to repeat edit_data" ;
+		std::cin >> repeat;
+	}
+}
+
+void Data::add_car()
+{
+	char repeat = 'Y';
+	std::string mod, num;
+	double cost_of_kilom, cost_of_day;
+	int mileage;
+	while ('Y' == repeat)
+	{
+		std::cout << "Enter the model a car: ";
+		std::cin >> mod;
+		std::cout << "Enter the number a car: ";
+		std::cin >> num;
+		std::cout << "Enter the cost of kilometr a car: ";
+		std::cin >> cost_of_kilom;
+		std::cout << "Enter the cost of day a car: ";
+		std::cin >> cost_of_day;
+		std::cout << "Enter the mileage a car: ";
+		std::cin >> mileage;
+		Car car(mod, num, mileage, cost_of_kilom, cost_of_day);
+		auto ret = list_of_cars.insert(make_pair(car.get_key(), car));
+		if (!ret.second)
+			std::cout << "This car was" << std::endl;
+
+		std::cout << "Enter 'Y' to repeat add car" ;
+		std::cin >> repeat;
+	}
+}
+
+void Data::delete_car()
+{
+	char repeat = 'Y';
+	std::string num;
+	while ('Y' == repeat)
+	{
+		std::cout << "Enter the number a car: ";
+		std::cin >> num;
+		size_t ret = list_of_cars.erase(num);
+		if (ret == 0)
+			std::cout << "There is no such car" << std::endl;
+		std::cout << "Enter 'Y' to repeat delete car" ;
+		std::cin >> repeat;
+	}
+}
+
+void Data::car_in_repair()
+{
+	char repeat = 'Y';
+	CAR_STATUS st;
+	int in_st;
+	std::string num;
+	while ('Y' == repeat)
+	{
+		std::cout << "Enter the number a car: ";
+		std::cin >> num;
+		std::cout << "Select action: 0 - send the machine for repair, 1 - return the car from repair";
+		std::cin >> in_st;
+		st = (in_st == 0) ? (BROKEN) : (FREE);
+		auto ret = list_of_cars.find(num);
+		if (ret != list_of_cars.end())
+			ret->second.set_status(st);
+		else
+			std::cout << "There is no such car" << std::endl;
+		std::cout << "Enter 'Y' to repeat delete car" ;
+		std::cin >> repeat;
+	}
+}
+
+void Data::add_client()
+{
+	char repeat = 'Y';
+	while ('Y' == repeat)
+	{
+		std::string f_N, l_N;
+		std::cout << "Enter first name of client: " ;
+		std::cin >> f_N;
+		std::cout << "Enter last name of client: " ;
+		std::cin >> f_N;
+		Client client(f_N, l_N);
+		auto ret = list_of_clients.insert(make_pair(client.get_key(), client));
+		if (!ret.second)
+		std::cout << "This client was" << std::endl;
+		std::cout << "Enter 'Y' to repeat add client" ;
+		std::cin >> repeat;
+	}
+}
+
+void Data::delete_client()
+{
+	char repeat = 'Y';
+	std::string f_N, l_N;
+	std::string key;
+	while ('Y' == repeat)
+	{
+		std::cout << "Enter first name of client: " ;
+		std::cin >> f_N;
+		std::cout << "Enter last name of client: " ;
+		std::cin >> f_N;
+		key = f_N + " " + l_N;
+		auto ret = list_of_clients.erase(key);
+		if (ret == 0)
+			std::cout << "There is no such client" << std::endl;
+		std::cout << "Enter 'Y' to repeat add client" ;
+		std::cin >> repeat;
 	}
 }
 
