@@ -19,6 +19,8 @@ void Senior_manager::action(Data& data)
 {
 	char repeat = 'Y';
 	int p;
+	std::cout << "Select action: 0 - give or get a car, 1 - edit list of cars or clients,";
+	std::cin >> p;
 	while ('Y' == repeat)
 	{
 		switch(p)

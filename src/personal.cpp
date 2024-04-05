@@ -213,3 +213,31 @@ void Personal::add_senjor_manager()
 	manager_ptr m_ptr  = std::make_shared<Manager>(m1);
 	list_of_Personal.insert(std::make_pair(m_ptr->get_id(), m_ptr));
 }
+
+void Personal::begin_work(Data& data)
+{
+	if (current_manager->position() == MANAGER)
+	{
+		std::cout << "Work as a manager" << std::endl;
+		current_manager->action(data);
+	}
+	else
+	{
+		std::cout << "Work as a senior manager" << std::endl;
+		int p;
+		std::cout << "Select action: 0 - work with the data, 1 - work with personal list";
+		std::cin >> p;
+		switch(p)
+		{
+		case 0:
+			current_manager->action(data);
+			break;
+		case 1:
+			edit_personal_list();
+			break;
+		default:
+			std::cout << "Error input" << std::endl;
+			break;
+		}
+	}
+}

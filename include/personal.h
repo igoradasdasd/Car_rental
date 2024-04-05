@@ -33,6 +33,7 @@ public:
 	void check_position(manager_ptr , POST) const;			// проверка соответсвия должностей
 
 	void edit_personal_list();
+	void begin_work(Data& data);
 
 	mutable manager_ptr current_manager;					// можно обойтись без mutable, но надо убрать const у соответсвующей функции
 private:

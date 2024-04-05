@@ -194,7 +194,7 @@ void Data::edit_data()
 	char repeat = 'Y';
 	int p;
 	std::cout << "Select action: 0 - add a car, 1 - delete a car, 2 - take it out for repair" << std::endl;
-	std::cout << "Select action: 3 - add a client, 4 - delete a client" << std::endl;
+	std::cout << " 3 - add a client, 4 - delete a client" << std::endl;
 
 	while ('Y' == repeat)
 	{
