@@ -11,7 +11,7 @@
 #include <memory>
 #include "manager.h"
 
-typedef std::shared_ptr<Manager> manager_ptr;
+//typedef Manager * manager_ptr;
 
 
 

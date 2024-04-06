@@ -9,9 +9,16 @@
 #include <fstream>
 #include <iostream>
 #include <utility>
-//#include <filesystem>
 
-void Personal::check_position(manager_ptr m, POST p) const
+Personal::~Personal()
+{
+	for (auto a: list_of_Personal)
+	{
+		delete (a.second);
+	}
+}
+
+void Personal::check_position(Manager * m, POST p) const
 {
 	if (m->position() != p)
 	{
@@ -40,21 +47,21 @@ void Personal::read_data_from_file(std::string file_manager, POST post)
 
 	while (!read_file.eof())
 	{
-		manager_ptr manager_ptr;
+		Manager * manager_ptr;
 		switch(post)
 		{
 		case MANAGER:
 		{
 			read_file>>manager;
-			check.check_ifstream(read_file, "managers are not read");
-			manager_ptr = std::make_shared<Manager>(manager);
+			if (check.check_ifstream(read_file))
+			manager_ptr = new Manager(manager);
 		}
 			break;
 		case SENIOR_MANAGER:
 		{
 			read_file>>s_manager;
-			check.check_ifstream(read_file, "senior managers are not read");
-			manager_ptr  = std::make_shared<Manager>(s_manager);
+			if (check.check_ifstream(read_file))
+			manager_ptr  = new Manager(s_manager);
 		}
 			break;
 		default:
@@ -84,12 +91,12 @@ void Personal::write_data(std::string file_managers, std::string file_senior_man
 		if (i->second->position() == MANAGER)
 		{
 			write_managers_file << ( *(i->second) );
-			check.check_ifstream(write_managers_file, "Personal::write_data");
+			check.check_ifstream(write_managers_file);
 		}
 		else
 		{
 			write_s_managers_file << ( *(i->second) );
-			check.check_ifstream(write_s_managers_file, "Personal::write_data");
+			check.check_ifstream(write_s_managers_file);
 		}
 	}
 }
@@ -97,15 +104,15 @@ void Personal::write_data(std::string file_managers, std::string file_senior_man
 void Personal::identification() const
 {
 	size_t in_id;
-	char c = 'y';
-	while (c == 'y')
+	char c = 'Y';
+	while (c == 'Y')
 	{
 		std::cout << "Input your id: " ;
 		std::cin >> in_id;
 		auto m =  list_of_Personal.find(in_id);
 		if (m == list_of_Personal.end())
 		{
-			std::cout << "This account is not found. Enter 'y' to repeat:  ";
+			std::cout << "This account is not found. Enter 'Y' to repeat:  ";
 			std::cin >> c;
 		}
 		else
@@ -120,14 +127,14 @@ void Personal::identification() const
 void Personal::authentication() const
 {
 	size_t password;
-	char c = 'y';
-	while (c == 'y')
+	char c = 'Y';
+	while (c == 'Y')
 	{
 		std::cout << "Input your password: " ;
 		std::cin >> password;
 		if (!current_manager->check_password(password))
 		{
-			std::cout << "This password is not correct. Enter 'y' to repeat:  ";
+			std::cout << "This password is not correct. Enter 'Y' to repeat:  ";
 			std::cin >> c;
 		}
 		else
@@ -145,7 +152,7 @@ void Personal::edit_personal_list()
 	char repeat = 'Y';
 	while (repeat == 'Y')
 	{
-		std::cout << "Enter post: 0 - add manager, 1 - add senjor_manager, 3 - delete manager or senjor_manager ";
+		std::cout << "Enter post: 0 - add manager, 1 - add senjor_manager, 2 - delete manager or senjor_manager: ";
 		std::cin >> p;
 		switch(p)
 		{
@@ -155,14 +162,14 @@ void Personal::edit_personal_list()
 		case 1:
 			add_senjor_manager();
 			break;
-		case 3:
+		case 2:
 			delete_manager();
 			break;
 		default:
-			std::cout << "Error input, enter 'Y' to repeat" ;
+			std::cout << "Error input, enter 'Y' to repeat: " ;
 			std::cin >> repeat;
 		};
-		std::cout << "Enter 'Y' to continue" ;
+		std::cout << "Enter 'Y' to continue: " ;
 		std::cin >> repeat;
 	}
 }
@@ -195,7 +202,7 @@ void Personal::add_manager()
 	std::cout << " Enter password: " << std::endl;
 	std::cin >> pass;
 	Manager m1(first_name, last_name, pass);
-	manager_ptr m_ptr  = std::make_shared<Manager>(m1);
+	Manager * m_ptr  = new Manager(m1);
 	list_of_Personal.insert(std::make_pair(m_ptr->get_id(), m_ptr));
 }
 
@@ -210,7 +217,7 @@ void Personal::add_senjor_manager()
 	std::cout << " Enter password: " << std::endl;
 	std::cin >> pass;
 	Senior_manager m1(first_name, last_name, pass);
-	manager_ptr m_ptr  = std::make_shared<Manager>(m1);
+	Manager * m_ptr  = new Manager(m1);
 	list_of_Personal.insert(std::make_pair(m_ptr->get_id(), m_ptr));
 }
 
@@ -223,9 +230,10 @@ void Personal::begin_work(Data& data)
 	}
 	else
 	{
+		std::cout << ( current_manager->position() );
 		std::cout << "Work as a senior manager" << std::endl;
 		int p;
-		std::cout << "Select action: 0 - work with the data, 1 - work with personal list";
+		std::cout << "Select action: 0 - work with the data, 1 - work with personal list: ";
 		std::cin >> p;
 		switch(p)
 		{

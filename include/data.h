@@ -59,7 +59,7 @@ void Data::write_object(std::string clients_f, std::map<std::string, T> list)
 	{
 		write_clients_file << ( (i->second) );
 
-		check.check_ifstream(write_clients_file, "Data::write_clients");
+		check.check_ifstream(write_clients_file);
 	}
 }
 

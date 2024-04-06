@@ -15,7 +15,7 @@
 struct Check_file_stream
 {
 	void check_open_file(std::fstream&, std::string, const std::string&) const; 	// проверка открытия файла
-	void check_ifstream(std::fstream&, const std::string&) const;					// проверка успешности чтения из файла
+	bool check_ifstream(std::fstream&) const;					// проверка успешности чтения из файла
 };
 
 inline void Check_file_stream::check_open_file(std::fstream& in, std::string name, const std::string& function_name) const
@@ -28,13 +28,15 @@ inline void Check_file_stream::check_open_file(std::fstream& in, std::string nam
 	}
 }
 
-inline void Check_file_stream::check_ifstream(std::fstream& in_stream, const std::string& function_name) const
+inline bool Check_file_stream::check_ifstream(std::fstream& in_stream) const
 {
 	if (!in_stream )
 	{
-		std::cout << function_name <<" - error ifstream" << std::endl; // ошибка потока
+//		std::cout << function_name <<" - error ifstream" << std::endl; // ошибка потока
 //		exit(EXIT_FAILURE);
+		return false;
 	}
+	return true;
 }
 
 #endif /* INCLUDE_CHECK_FILE_STREAM_H_ */

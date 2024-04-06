@@ -25,7 +25,7 @@ void Data::read_clients(std::string clients_f, std::map<std::string, Client> map
 	while (!read_file.eof())
 	{
 		read_file>>client;
-		check.check_ifstream(read_file, "client are not read");
+		check.check_ifstream(read_file);
 		map_object.insert(std::make_pair(client.get_key(), client));
 	}
 	read_file.close();
@@ -42,7 +42,7 @@ void Data::read_cars(std::string cars_f, std::map<std::string, Car> map_object)
 	while (!read_file.eof())
 	{
 		read_file>>car;
-		check.check_ifstream(read_file, "client are not read");
+		check.check_ifstream(read_file);
 		map_object.insert(std::make_pair(car.get_key(), car));
 	}
 	read_file.close();
@@ -65,7 +65,7 @@ void Data::work()
 	int p;
 	while ('Y' == repeat)
 	{
-		std::cout << "Select action: 0 - give a car, 1 - get a car" ;
+		std::cout << "Select action: 0 - give a car, 1 - get a car: " ;
 		std::cin >> p;
 		switch(p)
 		{
@@ -79,7 +79,7 @@ void Data::work()
 			std::cout << "Error input" << std::endl;
 			break;
 		}
-		std::cout << "Enter 'Y' to repeat" ;
+		std::cout << "Enter 'Y' to repeat select action: " ;
 		std::cin >> repeat;
 	}
 }
@@ -161,12 +161,13 @@ void Data::find(std::map<std::string, Client>::iterator & i_cl,
 	{
 		std::cout << "Enter client first name: " ;
 		std::cin >> ln;
-		std::cout << std::endl << "Enter client last name: ";
+		std::cout << "Enter client last name: ";
+		std::cin >> fn;
 		fn = fn + " " + ln;
 		i_cl = list_of_clients.find(fn);
 		if (i_cl == list_of_clients.end())
 		{
-			std::cout << "The сlient was not found. Enter 'Y' to repeat the search" ;
+			std::cout << "The сlient was not found. Enter 'Y' to repeat the search: " ;
 			std::cin >> repeat;
 			if (repeat != 'Y')
 				return;
@@ -181,7 +182,7 @@ void Data::find(std::map<std::string, Client>::iterator & i_cl,
 		i_car = list_of_cars.find(ln);
 		if (i_car == list_of_cars.end())
 		{
-			std::cout << "The car was not found. Enter 'Y' to repeat the search" ;
+			std::cout << "The car was not found. Enter 'Y' to repeat the search: " ;
 			std::cin >> repeat;
 			if (repeat != 'Y')
 				return;

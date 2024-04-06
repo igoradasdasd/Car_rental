@@ -19,7 +19,7 @@ std::ostream& operator<< (std::ostream& os, const Manager& rhs)
 	os << rhs.password << std::endl;
 	os << rhs.first_name << std::endl;
 	os << rhs.last_name  << std::endl;
-	os << static_cast<int>(rhs.post);
+	os << static_cast<int>(rhs.post) << std::endl;
 	return os;
 }
 
