@@ -18,7 +18,7 @@ std::ostream & operator << (std::ostream & os, const Car rhs)
 	os << rhs.cost_of_day << std::endl;
 	os << rhs.mileage << std::endl;
 	os << static_cast<int>(rhs.status) << std::endl;
-	os << rhs.time_car;
+	os << rhs.time_car << std::endl;
 	return os;
 }
 

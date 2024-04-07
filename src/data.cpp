@@ -10,11 +10,11 @@
 
 void Data::read_data(std::string client_f, std::string car_f)
 {
-	read_clients(client_f, list_of_clients);
-	read_cars(car_f, list_of_cars);
+	read_clients(client_f);
+	read_cars(car_f);
 }
 
-void Data::read_clients(std::string clients_f, std::map<std::string, Client> map_object)
+void Data::read_clients(std::string clients_f)
 {
 	std::fstream read_file(clients_f);
 	if (read_file.peek() == EOF)		// если файл пустой, завершаем работу
@@ -25,13 +25,13 @@ void Data::read_clients(std::string clients_f, std::map<std::string, Client> map
 	while (!read_file.eof())
 	{
 		read_file>>client;
-		check.check_ifstream(read_file);
-		map_object.insert(std::make_pair(client.get_key(), client));
+		if ( check.check_ifstream(read_file) )
+			list_of_clients.insert(std::make_pair(client.get_key(), client));
 	}
 	read_file.close();
 }
 
-void Data::read_cars(std::string cars_f, std::map<std::string, Car> map_object)
+void Data::read_cars(std::string cars_f)
 {
 	std::fstream read_file(cars_f);
 	if (read_file.peek() == EOF)		// если файл пустой, завершаем работу
@@ -42,8 +42,8 @@ void Data::read_cars(std::string cars_f, std::map<std::string, Car> map_object)
 	while (!read_file.eof())
 	{
 		read_file>>car;
-		check.check_ifstream(read_file);
-		map_object.insert(std::make_pair(car.get_key(), car));
+		if ( check.check_ifstream(read_file) )
+			list_of_cars.insert(std::make_pair(car.get_key(), car));
 	}
 	read_file.close();
 }
@@ -55,8 +55,8 @@ void Data::write_data(std::string client_f, std::string car_f)
 	write_object(car_f, list_of_cars);
 }
 
-template void Data::write_object(std::string , std::map<std::string, Client> );
-template void Data::write_object(std::string , std::map<std::string, Car> );
+template void Data::write_object(std::string , std::map<std::string, Client> &);
+template void Data::write_object(std::string , std::map<std::string, Car> &);
 
 void Data::work()
 {
@@ -196,6 +196,7 @@ void Data::edit_data()
 	int p;
 	std::cout << "Select action: 0 - add a car, 1 - delete a car, 2 - take it out for repair" << std::endl;
 	std::cout << " 3 - add a client, 4 - delete a client" << std::endl;
+	std::cin >> p;
 
 	while ('Y' == repeat)
 	{
@@ -301,11 +302,11 @@ void Data::add_client()
 		std::cout << "Enter first name of client: " ;
 		std::cin >> f_N;
 		std::cout << "Enter last name of client: " ;
-		std::cin >> f_N;
+		std::cin >> l_N;
 		Client client(f_N, l_N);
 		auto ret = list_of_clients.insert(make_pair(client.get_key(), client));
 		if (!ret.second)
-		std::cout << "This client was" << std::endl;
+			std::cout << "This client was" << std::endl;
 		std::cout << "Enter 'Y' to repeat add client" ;
 		std::cin >> repeat;
 	}

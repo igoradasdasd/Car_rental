@@ -41,7 +41,7 @@ public:
 private:
 	string model;				// модель
 	string number;				// номер
-	string client_key = std::string();			// id (ключ в map) клиента, взявшего машину
+	string client_key = std::string("0");			// id (ключ в map) клиента, взявшего машину
 	double cost_of_kilometer;	// при пробеге более 300 км за сутки , берется дополнительная стоимость за каждый километер сверху
 	double cost_of_day;			// стоимость дня аренды
 	int mileage;				// пробег

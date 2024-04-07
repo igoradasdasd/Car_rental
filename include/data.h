@@ -37,23 +37,23 @@ private:
 	void delete_car();
 	void car_in_repair();
 
-	void read_clients(std::string clients_f, std::map<std::string, Client> list);
-	void read_cars(std::string clients_f, std::map<std::string, Car> list);
+	void read_clients(std::string clients_f);
+	void read_cars(std::string clients_f);
 	void get_car();			// получить машину
 	void give_car();		// выдать машину
 	void find(std::map<std::string, Client>::iterator &, std::map<std::string, Car>::iterator &);
 
 	template <typename T>
-	void write_object(std::string clients_f, std::map<std::string, T>);
+	void write_object(std::string file_name, std::map<std::string, T>&);
 	std::map<std::string, Client> list_of_clients;
 	std::map<std::string, Car> list_of_cars;
 };
 
 template <typename T>
-void Data::write_object(std::string clients_f, std::map<std::string, T> list)
+void Data::write_object(std::string file_name, std::map<std::string, T>& list)
 {
-	std::fstream write_clients_file(clients_f);
-	check.check_open_file(write_clients_file, clients_f, "Data::write_clients");
+	std::fstream write_clients_file(file_name);
+	check.check_open_file(write_clients_file, file_name, "Data::write_clients");
 	for (auto i = list.cbegin();
 			i != list.cend(); ++i)
 	{
@@ -63,7 +63,7 @@ void Data::write_object(std::string clients_f, std::map<std::string, T> list)
 	}
 }
 
-extern template void Data::write_object(std::string , std::map<std::string, Client> );
-extern template void Data::write_object(std::string , std::map<std::string, Car> );
+extern template void Data::write_object(std::string , std::map<std::string, Client> &);
+extern template void Data::write_object(std::string , std::map<std::string, Car> &);
 
 #endif /* INCLUDE_DATA_H_ */

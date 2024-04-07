@@ -230,15 +230,15 @@ void Personal::begin_work(Data& data)
 	}
 	else
 	{
-		std::cout << ( current_manager->position() );
-		std::cout << "Work as a senior manager" << std::endl;
+		// виртуальность так и не отработала
+		Senior_manager * s_m = dynamic_cast<Senior_manager *>(current_manager);
 		int p;
 		std::cout << "Select action: 0 - work with the data, 1 - work with personal list: ";
 		std::cin >> p;
 		switch(p)
 		{
 		case 0:
-			current_manager->action(data);
+			s_m->action(data);
 			break;
 		case 1:
 			edit_personal_list();
