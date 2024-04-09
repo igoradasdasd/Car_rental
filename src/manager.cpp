@@ -7,7 +7,21 @@
 
 #include "../include/manager.h"
 
-size_t Manager::id_count = 2; 		// предустановленный senior_manager должен иметь id 0
+size_t Manager::id_count;
+
+void Manager::read_id_count(std::string in)
+{
+	std::fstream read(in);
+	read >> id_count;
+}
+
+void Manager::write_id_count(std::string in)
+{
+	std::fstream write(in);
+	write << id_count;
+}
+
+		// предустановленный senior_manager должен иметь id 0
 
 Manager::Manager(std::string f_name, std::string l_name, size_t pass, POST in_post):
 		Person(f_name, l_name), password(pass), post(in_post)

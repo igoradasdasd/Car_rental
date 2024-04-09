@@ -17,17 +17,12 @@
 #include "./include/manager.h"
 #include "./include/typedef.h"
 
-// перейти от умного указателя к обычому в Personal
-//
+
+
 // реализовать для Personal конструктор копий, конструктор rvalue, оператор присвоение копии, оператор присвоения rvalue
 
-// реализовать сохранение и чтение id в файл
-/*
-void func(Manager* r, Data & data)
-{
-	r->action(data);
-}
-*/
+// разобраться почему нет виртуальности
+
 int main()
 {
 	Data data;
@@ -36,6 +31,9 @@ int main()
 	// считывание данных
 	std::string manager_file("./files/managers_file.txt");
 	std::string senior_manager_file = "./files/senior_managers_file.txt";
+	std::string id_count_file = "./files/id_count_file.txt";
+	Manager::read_id_count(id_count_file);
+
 	personal.read_data(manager_file, senior_manager_file);
 
 	std::string cars_file("./files/cars.txt");
@@ -49,6 +47,8 @@ int main()
 
 	data.write_data(clients_file, cars_file);
 	personal.write_data(manager_file, senior_manager_file);
+	Manager::write_id_count(id_count_file);
+
 }
 
 
