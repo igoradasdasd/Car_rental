@@ -10,6 +10,66 @@
 #include <iostream>
 #include <utility>
 
+Personal::Personal(const Personal& in_personal)
+{
+	copy(in_personal);
+}
+
+Personal::Personal(Personal&& in_personal) noexcept
+{
+	for (auto i: in_personal.list_of_Personal)
+	{
+		list_of_Personal.insert(std::make_pair(i.first, i.second ));
+		i.second = nullptr;
+	}
+}
+
+Personal& Personal::operator = (const Personal& in_personal)
+{
+	// освобождаем ресурсы текущего объекта
+	clear_list();
+
+	if (this != (&in_personal))	// защита от копирования в самого себя
+	{
+		copy(in_personal);
+	}
+	return *this;
+}
+
+Personal& Personal::operator = (const Personal&& in_personal) noexcept
+{
+	if (this != (&in_personal))	// защита от копирования в самого себя
+	{
+		// освобождаем ресурсы текущего объекта
+		clear_list();
+
+		for (auto i: in_personal.list_of_Personal)
+		{
+			list_of_Personal.insert(std::make_pair(i.first, i.second ));
+			i.second = nullptr;
+		}
+	}
+	return *this;
+}
+
+void Personal::clear_list()
+{
+	auto i = list_of_Personal.begin();
+	while (i != list_of_Personal.end() )
+	{
+		delete i->second;
+		i = list_of_Personal.erase(i);
+	}
+}
+
+void Personal::copy(const Personal& in_personal)
+{
+	for (auto i: in_personal.list_of_Personal)
+	{
+		list_of_Personal.insert(std::make_pair(i.first, new Manager(*i.second) ));
+	}
+}
+
 Personal::~Personal()
 {
 	for (auto a: list_of_Personal)

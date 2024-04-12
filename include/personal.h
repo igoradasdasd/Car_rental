@@ -23,6 +23,11 @@ public:
 	Check_file_stream check;
 
 	~Personal();
+	Personal() = default;
+	Personal(const Personal& in_personal);
+	Personal(Personal&& in_personal) noexcept;
+	Personal& operator = (const Personal& in_personal);
+	Personal& operator = (const Personal&& in_personal) noexcept;
 
 	void identification () const;
 	void authentication () const;
@@ -36,8 +41,10 @@ public:
 	void edit_personal_list();
 	void begin_work(Data& data);
 
-	mutable Manager * current_manager;					// можно обойтись без mutable, но надо убрать const у соответсвующей функции
+	mutable Manager * current_manager = NULL;					// можно обойтись без mutable, но надо убрать const у соответсвующей функции
 private:
+	void clear_list();											// очищаем list_of_Personal
+	void copy(const Personal& in_personal);
 	void read_data_from_file(std::string file_manager, POST);	// чтение данных из файла
 	void wirte_data_from_file(std::string file_manager, POST);	// запись данных в файл
 	void add_manager();
