@@ -160,9 +160,9 @@ void Data::find(std::map<std::string, Client>::iterator & i_cl,
 	while ('Y' == repeat)
 	{
 		std::cout << "Enter client first name: " ;
-		std::cin >> ln;
-		std::cout << "Enter client last name: ";
 		std::cin >> fn;
+		std::cout << "Enter client last name: ";
+		std::cin >> ln;
 		fn = fn + " " + ln;
 		i_cl = list_of_clients.find(fn);
 		if (i_cl == list_of_clients.end())
@@ -172,6 +172,8 @@ void Data::find(std::map<std::string, Client>::iterator & i_cl,
 			if (repeat != 'Y')
 				return;
 		}
+		else
+			break;
 	}
 
 	// find the car
@@ -187,6 +189,8 @@ void Data::find(std::map<std::string, Client>::iterator & i_cl,
 			if (repeat != 'Y')
 				return;
 		}
+		else
+			break;
 	}
 }
 
