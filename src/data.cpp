@@ -163,7 +163,7 @@ void Data::find(std::map<std::string, Client>::iterator & i_cl,
 		std::cin >> fn;
 		std::cout << "Enter client last name: ";
 		std::cin >> ln;
-		fn = fn + " " + ln;
+		fn = fn + "_" + ln;
 		i_cl = list_of_clients.find(fn);
 		if (i_cl == list_of_clients.end())
 		{

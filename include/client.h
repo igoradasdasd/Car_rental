@@ -22,9 +22,9 @@ public:
 	~Client() = default;
 	Client() = default;
 	Client(std::string fN, std::string lN);
-	std::string get_key(){return first_name + " " + last_name;}
+	std::string get_key(){return first_name + "_" + last_name;}
 	void set_car_key(const std::string & in) {}
-	void clear_car_key() { car_key = std::string();}
+	void clear_car_key() { car_key = std::string("0");}
 	std::string give_car_key(){return car_key;}
 	void set_status(const CLIENT_STATUS& in_status){ status = in_status;}
 	bool check_status();

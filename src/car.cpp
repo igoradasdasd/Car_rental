@@ -1,15 +1,16 @@
 /*
  * car.cpp
  *
- *  Created on: 10 мар. 2024 г.
- *      Author: axtea
+ *  Created on: 14 апр. 2024 г.
+ *      Author: Игорь
  */
+
 #include "../include/car.h"
 
-Car::Car(string mod, string num, int mil, double cost_of_km, double cost_of_d):
+Car::Car(std::string mod, std::string num, int mil, double cost_of_km, double cost_of_d):
 	model(mod), number(num), cost_of_kilometer(cost_of_km), cost_of_day(cost_of_d),  mileage(mil){}
 
-std::ostream & operator << (std::ostream & os, const Car rhs)
+std::ostream & operator << (std::ostream & os, const Car & rhs)
 {
 	os << rhs.model << std::endl;
 	os << rhs.number << std::endl;
@@ -17,13 +18,11 @@ std::ostream & operator << (std::ostream & os, const Car rhs)
 	os << rhs.cost_of_kilometer << std::endl;
 	os << rhs.cost_of_day << std::endl;
 	os << rhs.mileage << std::endl;
-	os << static_cast<int>(rhs.status) << std::endl;
+	os << rhs.status << std::endl;
 	os << rhs.time_car << std::endl;
 	return os;
 }
-
-
-std::istream & operator >> (std::istream & is, Car rhs)
+std::istream & operator >> (std::istream & is, Car & rhs)
 {
 	int in;
 	is >> rhs.model;
@@ -52,3 +51,5 @@ bool Car::check_status()
 	}
 	return true;
 }
+
+
