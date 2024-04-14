@@ -225,7 +225,7 @@ void Data::edit_data()
 			std::cout << "Error input" << std::endl;
 			break;
 		}
-		std::cout << "Enter 'Y' to repeat edit_data" ;
+		std::cout << "Enter 'Y' to repeat edit_data: " ;
 		std::cin >> repeat;
 	}
 }
@@ -253,7 +253,7 @@ void Data::add_car()
 		if (!ret.second)
 			std::cout << "This car was" << std::endl;
 
-		std::cout << "Enter 'Y' to repeat add car" ;
+		std::cout << "Enter 'Y' to repeat add car: " ;
 		std::cin >> repeat;
 	}
 }
@@ -269,7 +269,7 @@ void Data::delete_car()
 		size_t ret = list_of_cars.erase(num);
 		if (ret == 0)
 			std::cout << "There is no such car" << std::endl;
-		std::cout << "Enter 'Y' to repeat delete car" ;
+		std::cout << "Enter 'Y' to repeat delete car: " ;
 		std::cin >> repeat;
 	}
 }
@@ -292,7 +292,7 @@ void Data::car_in_repair()
 			ret->second.set_status(st);
 		else
 			std::cout << "There is no such car" << std::endl;
-		std::cout << "Enter 'Y' to repeat delete car" ;
+		std::cout << "Enter 'Y' to repeat delete car: " ;
 		std::cin >> repeat;
 	}
 }
@@ -311,7 +311,7 @@ void Data::add_client()
 		auto ret = list_of_clients.insert(make_pair(client.get_key(), client));
 		if (!ret.second)
 			std::cout << "This client was" << std::endl;
-		std::cout << "Enter 'Y' to repeat add client" ;
+		std::cout << "Enter 'Y' to repeat add client: " ;
 		std::cin >> repeat;
 	}
 }
@@ -331,7 +331,7 @@ void Data::delete_client()
 		auto ret = list_of_clients.erase(key);
 		if (ret == 0)
 			std::cout << "There is no such client" << std::endl;
-		std::cout << "Enter 'Y' to repeat add client" ;
+		std::cout << "Enter 'Y' to repeat add client: " ;
 		std::cin >> repeat;
 	}
 }
