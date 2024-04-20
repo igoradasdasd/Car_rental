@@ -27,10 +27,9 @@ Personal::Personal(Personal&& in_personal) noexcept
 Personal& Personal::operator = (const Personal& in_personal)
 {
 	// освобождаем ресурсы текущего объекта
-	clear_list();
-
 	if (this != (&in_personal))	// защита от копирования в самого себя
 	{
+		clear_list();
 		copy(in_personal);
 	}
 	return *this;
