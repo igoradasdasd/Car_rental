@@ -243,11 +243,15 @@ void Personal::delete_manager()
 		std::cout << "You can't delete yourself" << std::endl;
 		return;
 	}
-	size_t del_count = list_of_Personal.erase(in_id);
-	if ( 0 == del_count )
+
+	if (list_of_Personal.end() == list_of_Personal.find(in_id))
 		std::cout << "A worker not found" << std::endl;
 	else
+	{
+		delete list_of_Personal.find(in_id)->second;
+		list_of_Personal.erase(in_id);
 		std::cout << "the removal of the employee was successful" << std::endl;
+	}
 }
 
 void Personal::add_manager()
